@@ -255,11 +255,9 @@ If you wish to modify the channel that Forge messages, you should first disable 
 
 ### Telegram
 
-To enable Telegram notifications, click the **Enable Telegram Notifications** button. Forge will open a new window that takes you to the official Telegram website. If you have the desktop application installed, your browser will ask if you wish to open Telegram. Alternatively, you will need to log in to the web version of Telegram.
+To enable Telegram notifications, open Telegram and create or select a group chat that you want Forge to send deployment notifications to. Next, you should add the Laravel Forge bot to the chat by searching for the user `laravel_forge_telegram_bot`. Finally, copy the `/start` command, provided by Forge under the Telegram Deployment Notifications section, and paste it into the chat.
 
-Click **Open Telegram** and select the group chat that you want Forge to send deployment notifications to. Forge will send the group a message confirming the connection.
-
-If you wish to change the group that Forge messages, you should disable Telegram notifications and then re-enable the notifications.
+If you wish to change the group that Forge messages, you should disable Telegram notifications and then follow the above steps again to reactive notifications.
 
 ### Microsoft Teams
 
