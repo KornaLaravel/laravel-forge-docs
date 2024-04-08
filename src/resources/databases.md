@@ -12,6 +12,7 @@ When creating a new server, you can select to install a supported database serve
 
 - MySQL (8.0)
 - MariaDB (10.6)
+- MariaDB (10.11)
 - PostgreSQL (12)
 - PostgreSQL (13)
 - PostgreSQL (14)
