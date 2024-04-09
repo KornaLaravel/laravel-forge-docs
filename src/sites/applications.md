@@ -77,6 +77,11 @@ Additionally, Forge will prompt for additional information required to setup the
 - **Port:** Used to instruct the Reverb daemon which server port it should run on. Forge will proxy requests for the given public hostname to this port.
 - **Maximum Concurrent Connections:** The number of connections your Reverb server can handle will depend on a combination of the resources available on the server and the amount of connections and messages being processed. You should enter the number of connections the server can manage before it should prevent new connections. This option will update the server's allowed open file limit, Nginx's allowed open file and connection limit, and install the `ev` event loop if required.
 
+:::warning Reverb Hostname Configuration
+
+Forge ensures the hostname provided during Reverb's installation process is publicly accessible by adding a new server block to your existing site's Nginx configuration. This server block is contained within a new file and is not available to edit from the Forge UI dashboard.
+:::
+
 If the site's deploy script does not contain the `reverb:restart` command, Forge will automatically append it for you.
 
 ### SSL
@@ -84,6 +89,19 @@ If the site's deploy script does not contain the `reverb:restart` command, Forge
 If an SSL certificate exists for your site which protects Reverb's configured hostname, Forge will automatically install it when enabling Reverb, ensuring your Reverb server is accessible via secure WebSockets (`wss`).
 
 If Reverb is installed before a valid certificate is available, you may request a new certificate for Reverb's configured hostname from your site's "SSL" tab. Forge will automatically configure secure WebSockets for Reverb as soon as the certificate is activated. Forge will also pre-populate the "Domains" SSL form input with Reverb's hostname when requesting a certificate.
+
+After activating SSL on a Reverb-enabled site, you should ensure the following environment variables are properly defined before redeploying your site:
+
+```
+REVERB_PORT=443
+REVERB_SCHEME=https
+
+VITE_REVERB_PORT="${REVERB_PORT}"
+VITE_REVERB_SCHEME="${REVERB_SCHEME}"
+
+MIX_REVERB_PORT="${REVERB_PORT}"
+MIX_REVERB_SCHEME="${REVERB_SCHEME}"
+```
 
 ### Converting Existing Daemons
 
